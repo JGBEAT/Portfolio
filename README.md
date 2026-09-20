@@ -7,10 +7,10 @@
 直接用瀏覽器開啟 `index.html`，或執行：
 
 ```bash
-python -m http.server 8000
+python -m http.server 8123
 ```
 
-然後前往 http://localhost:8000。
+然後前往 http://localhost:8123。
 
 ## 部署
 
