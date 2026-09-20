@@ -349,10 +349,7 @@ main > :not(.hero) { max-width: 1080px; margin-inline: auto; padding-inline: 24p
 .toc span { font-size: .92rem; line-height: 1.4; }
 
 /* ---------- About ---------- */
-.about { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
-.portrait { margin: 0; }
-.portrait img { width: 100%; height: auto; display: block; filter: grayscale(.15) contrast(1.03); border-bottom: 6px solid var(--accent-solid); }
-.portrait figcaption { margin-top: 10px; font-weight: 700; font-size: 1.1rem; }
+.about { max-width: 820px; padding-left: 20px; border-left: 4px solid var(--accent-solid); }
 .about-body p { margin: 0 0 14px; color: color-mix(in srgb, var(--text) 88%, transparent); }
 
 .stats { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
@@ -551,8 +548,6 @@ main > :not(.hero) { max-width: 1080px; margin-inline: auto; padding-inline: 24p
   nav a { font-size: .85rem; }
   main > :not(.hero) { padding-inline: 16px; }
   .hero { padding: 40px 16px; min-height: auto; }
-  .about { grid-template-columns: 1fr; }
-  .portrait { max-width: 220px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .gallery { grid-template-columns: 1fr 1fr; }
   .s6, .s4 { grid-column: span 2; }
