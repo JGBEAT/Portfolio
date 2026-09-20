@@ -1,85 +1,378 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JGBEAT | 個人網站</title>
-  <meta name="description" content="JGBEAT 的個人作品集與部落格入口。">
+  <title>江浚盛 | 遊戲開發者・技術美術</title>
+  <meta name="description" content="江浚盛的作品集：遊戲開發者，專長技術美術、關卡企劃與專案管理。《Silent Wreckage 寂靜沉輪》開發者。">
+  <meta name="theme-color" content="#0d1b1f">
+  <meta property="og:title" content="江浚盛 | 遊戲開發者・技術美術">
+  <meta property="og:description" content="技術美術、關卡企劃、專案管理。《Silent Wreckage 寂靜沉輪》開發者。">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <aside class="gauge" aria-hidden="true">
+    <span class="gauge-label">DEPTH</span>
+    <span class="gauge-value"><b id="depth">0</b><small>m</small></span>
+    <div class="gauge-track"><i id="gauge-fill"></i></div>
+    <span class="gauge-label">O₂ <b id="o2">100</b>%</span>
+  </aside>
+
   <header class="site-header">
-    <a class="logo" href="#top">JGBEAT</a>
-    <nav>
-      <a href="#about">關於我</a>
-      <a href="#skills">技能</a>
-      <a href="#projects">作品</a>
+    <a class="logo" href="#top"><span>江浚盛</span></a>
+    <nav aria-label="主要導覽">
+      <a href="#about">關於</a>
+      <a href="#works">作品</a>
+      <a href="#timeline">經歷</a>
       <a href="#contact">聯絡</a>
-      <button id="theme-toggle" type="button" aria-label="切換深色／淺色模式">◐</button>
+      <button id="theme-toggle" type="button" aria-label="切換深海／紙本模式" title="切換深海／紙本模式">◐</button>
     </nav>
   </header>
 
   <main id="top">
+    <!-- HERO -->
     <section class="hero">
-      <p class="eyebrow">Hello, 我是</p>
-      <h1>JGBEAT</h1>
-      <p class="lead">一句話介紹你自己，例如：熱愛把想法變成產品的開發者與創作者。</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">看我的作品</a>
-        <a class="btn" href="#contact">聯絡我</a>
+      <canvas id="bubbles" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Game Developer / Technical Artist</p>
+          <h1 class="glitch" data-text="江浚盛">江浚盛</h1>
+          <p class="roles">遊戲開發者 · 技術美術 · 關卡企劃 · 專案管理</p>
+          <p class="lead">把深海的恐懼，做成可以被玩的東西。<br>我負責把創意企劃轉化為技術規格，並讓美術資產真正跑進遊戲裡。</p>
+          <ul class="badges" aria-label="獲獎與參展">
+            <li>台北國際電玩展 獨立遊戲專區</li>
+            <li>放視大賞 優選</li>
+            <li>青春設計節 優選</li>
+            <li>金典新秀設計獎 入圍</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary" href="#works">看我的作品</a>
+            <a class="btn" href="#contact">聯絡我</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="images/poster.webp" width="1000" height="1414" alt="《Silent Wreckage 寂靜沉輪》主視覺海報">
+        </div>
       </div>
     </section>
 
+    <!-- 目錄 -->
+    <section class="toc-wrap" aria-labelledby="toc-title">
+      <h2 id="toc-title" class="toc-title">目錄<small>Contents</small></h2>
+      <nav class="toc" aria-label="作品目錄">
+        <a href="#about" style="--c:#707072"><b>01</b><span>個人簡介</span></a>
+        <a href="#interstellar" style="--c:#22547f"><b>02</b><span>Interstellar Exploration</span></a>
+        <a href="#alley" style="--c:#16272b"><b>03</b><span>Alley</span></a>
+        <a href="#eiffel" style="--c:#3b0a0e"><b>04</b><span>The Legend Of Eiffel</span></a>
+        <a href="#silent-wreckage" style="--c:#857b76"><b>05</b><span>Silent Wreckage<br>寂靜沉輪</span></a>
+      </nav>
+    </section>
+
+    <!-- 01 ABOUT -->
     <section id="about" class="section">
-      <h2>關於我</h2>
-      <p>在這裡寫下你的故事：你是誰、做什麼、為什麼做。可以提到你的背景、興趣，以及你目前正在學習或投入的事情。</p>
-    </section>
+      <p class="section-num">01</p>
+      <h2>個人簡介</h2>
+      <div class="about">
+        <figure class="portrait">
+          <img src="images/profile.webp" width="480" height="478" alt="江浚盛的大頭照" loading="lazy">
+          <figcaption>江浚盛</figcaption>
+        </figure>
+        <div class="about-body">
+          <p>我是畢業於嶺東科技大學數位媒體設計系的遊戲開發者，兼具企劃、美術技術與專案管理的跨領域整合能力。在獨立遊戲《Silent Wreckage 寂靜沉輪》的開發過程中，我同時擔任核心技術美術與專案負責人，成功將創意企劃轉化為技術規格，並優化美術資產的開發流程。</p>
+          <p>具備優秀的跨團隊溝通與時程管理能力，曾帶領專案團隊進駐「台北國際電玩展獨立遊戲專區」，並榮獲「放視大賞優選獎」、「青春設計節優選獎」等多項業界指標性獎項。期待運用溝通、技術與管理的即戰力，協助團隊高效推動專案落地。</p>
 
-    <section id="skills" class="section">
-      <h2>技能</h2>
-      <ul class="tags">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Git / GitHub</li>
-        <li>UI 設計</li>
-      </ul>
-    </section>
+          <ul class="stats">
+            <li><b data-count="4">0</b><span>完整作品</span></li>
+            <li><b data-count="1">0</b><span>Steam 上架遊戲</span></li>
+            <li><b data-count="3">0</b><span>競賽獎項／入圍</span></li>
+            <li><b data-count="6">0</b><span>專業證照</span></li>
+          </ul>
+        </div>
+      </div>
 
-    <section id="projects" class="section">
-      <h2>作品</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>專案一</h3>
-          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
-          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
-        </article>
-        <article class="card">
-          <h3>專案二</h3>
-          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
-          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
-        </article>
-        <article class="card">
-          <h3>專案三</h3>
-          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
-          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
-        </article>
+      <div class="skill-grid">
+        <div class="skill-box">
+          <h3>專長</h3>
+          <ul class="tags">
+            <li>企劃（系統、關卡、機制）</li>
+            <li>技術美術</li>
+            <li>專案管理</li>
+            <li>3D 建模</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <h3>專長軟體</h3>
+          <ul class="tags">
+            <li>Maya</li>
+            <li>Unreal Engine</li>
+            <li>ZBrush</li>
+            <li>Substance Painter</li>
+            <li>Photoshop</li>
+            <li>Illustrator</li>
+          </ul>
+        </div>
+        <div class="skill-box">
+          <h3>證照</h3>
+          <ul class="tags">
+            <li>視覺傳達丙級</li>
+            <li>印前製程丙級</li>
+            <li>印前製程乙級</li>
+            <li>TQC+ 電腦圖像編輯製作</li>
+            <li>TQC+ 影像編輯製作</li>
+            <li>Autodesk Certified User: Maya</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
-      <h2>聯絡</h2>
-      <p>想合作或聊聊，歡迎來信。</p>
-      <p><a class="btn primary" href="mailto:s0968522043@gmail.com">s0968522043@gmail.com</a></p>
+    <!-- WORKS -->
+    <section id="works" class="section">
+      <h2>作品<small>Works</small></h2>
+
+      <!-- 02 Interstellar Exploration -->
+      <article id="interstellar" class="project" style="--tone:#22547f">
+        <div class="project-info">
+          <span class="p-num">02</span>
+          <h3>Interstellar Exploration</h3>
+          <p class="p-type">獨立製作 · 動畫</p>
+          <dl class="p-meta">
+            <dt>負責事項</dt>
+            <dd>3D 建模、場景氛圍、特效材質</dd>
+          </dl>
+          <a class="btn" href="https://youtu.be/8vAgbiEHYUE" target="_blank" rel="noopener">在 YouTube 觀看 ↗</a>
+        </div>
+        <div class="gallery">
+          <figure class="shot s6"><button type="button" class="shot-btn" data-caption="Interstellar Exploration — 場景與機械">
+            <img src="images/interstellar-main.webp" width="1500" height="844" alt="藍色夜景中的機械單位特寫" loading="lazy"></button></figure>
+          <figure class="shot s2 cutout stretch"><button type="button" class="shot-btn" data-caption="Interstellar Exploration — 機械角色模型">
+            <img src="images/interstellar-robot.webp" width="620" height="852" alt="機械角色去背模型" loading="lazy"></button></figure>
+          <figure class="shot s4"><button type="button" class="shot-btn" data-caption="Interstellar Exploration — 草叢場景氛圍">
+            <img src="images/interstellar-grass.webp" width="1400" height="633" alt="夜間草叢的場景氛圍" loading="lazy"></button></figure>
+        </div>
+      </article>
+
+      <!-- 03 Alley -->
+      <article id="alley" class="project flip" style="--tone:#16272b">
+        <div class="project-info">
+          <span class="p-num">03</span>
+          <h3>Alley</h3>
+          <p class="p-type">獨立製作 · 動畫</p>
+          <dl class="p-meta">
+            <dt>負責事項</dt>
+            <dd>場景氛圍、場景搭建</dd>
+          </dl>
+          <a class="btn" href="https://www.instagram.com/reel/C4DEYvMBVto/" target="_blank" rel="noopener">在 Instagram 觀看 ↗</a>
+        </div>
+        <div class="gallery">
+          <figure class="shot s6" style="--ar:16/10"><button type="button" class="shot-btn" data-caption="Alley — 潮濕的暗巷">
+            <img src="images/alley.webp" width="1185" height="1126" alt="鷹架與管線交錯的昏暗巷弄" loading="lazy"></button></figure>
+        </div>
+      </article>
+
+      <!-- 04 The Legend Of Eiffel -->
+      <article id="eiffel" class="project" style="--tone:#3b0a0e">
+        <div class="project-info">
+          <span class="p-num">04</span>
+          <h3>The Legend Of Eiffel</h3>
+          <p class="p-type">多人製作 · 遊戲</p>
+          <dl class="p-meta">
+            <dt>負責事項</dt>
+            <dd>企劃、3D 建模、場景氛圍、技術美術</dd>
+          </dl>
+          <a class="btn" href="https://www.youtube.com/watch?v=HpZUaoBd-aw" target="_blank" rel="noopener">在 YouTube 觀看 ↗</a>
+        </div>
+        <div class="gallery">
+          <figure class="shot s4" style="--ar:4/3"><button type="button" class="shot-btn" data-caption="The Legend Of Eiffel — 龍與少女">
+            <img src="images/eiffel-scene.webp" width="1063" height="753" alt="少女在紅色荒野中追著巨龍" loading="lazy"></button></figure>
+          <figure class="shot s2 cutout stretch"><button type="button" class="shot-btn" data-caption="The Legend Of Eiffel — 龍模型">
+            <img src="images/eiffel-dragon.webp" width="800" height="667" alt="紅色裂紋的龍去背模型" loading="lazy"></button></figure>
+          <figure class="shot s6" style="--ar:21/9"><button type="button" class="shot-btn" data-caption="The Legend Of Eiffel — 火海場景">
+            <img src="images/eiffel-fire.webp" width="1200" height="897" alt="烈火燃燒的場景" loading="lazy"></button></figure>
+        </div>
+      </article>
+
+      <!-- 05 Silent Wreckage -->
+      <article id="silent-wreckage" class="project featured" style="--tone:#857b76">
+        <div class="sw-top">
+          <figure class="poster">
+            <img src="images/poster.webp" width="1000" height="1414" alt="Silent Wreckage 寂靜沉輪 海報" loading="lazy">
+          </figure>
+          <div class="project-info">
+            <span class="p-num">05</span>
+            <h3>Silent Wreckage <span class="zh">寂靜沉輪</span></h3>
+            <p class="p-type">多人製作 · 遊戲</p>
+            <ul class="tags small">
+              <li>Deep-Sea Fear</li>
+              <li>Air Resource Management</li>
+              <li>Narrative Puzzle Experience</li>
+            </ul>
+            <dl class="p-meta">
+              <dt>負責事項</dt>
+              <dd>企劃（系統、關卡、機制、行銷）</dd>
+              <dd>技術美術</dd>
+              <dd>專案管理</dd>
+              <dd>3D 建模</dd>
+            </dl>
+            <a class="btn primary" href="https://store.steampowered.com/app/4641880/Silent_Wreckage/" target="_blank" rel="noopener">前往 Steam 商店 ↗</a>
+          </div>
+        </div>
+
+        <div class="gallery sw-gallery">
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 船員艙房">
+            <img src="images/sw-room.webp" width="1600" height="900" alt="昏暗的船員艙房" loading="lazy"></button></figure>
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 異變的組織">
+            <img src="images/sw-bulbs.webp" width="1600" height="900" alt="牆面上懸吊的詭異組織" loading="lazy"></button></figure>
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 進水的艙室">
+            <img src="images/sw-flood.webp" width="1600" height="900" alt="崩塌天花板下進水的艙室" loading="lazy"></button></figure>
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 深海洞穴">
+            <img src="images/sw-cave.webp" width="1600" height="900" alt="紅色警示燈下的深海洞穴" loading="lazy"></button></figure>
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 船體甲板">
+            <img src="images/sw-deck.webp" width="1600" height="900" alt="霧中的沉船甲板" loading="lazy"></button></figure>
+          <figure class="shot s2"><button type="button" class="shot-btn" data-caption="Silent Wreckage — 潛水視角">
+            <img src="images/sw-dive.webp" width="1400" height="748" alt="藍色光線下潛水員視角" loading="lazy"></button></figure>
+        </div>
+
+        <div class="details">
+          <h4>製作細節 <small>我在這款遊戲裡做了什麼</small></h4>
+          <div class="tabs" role="tablist" aria-label="製作細節">
+            <button role="tab" id="tab-level" aria-controls="panel-level" aria-selected="true">關卡設計</button>
+            <button role="tab" id="tab-flow" aria-controls="panel-flow" aria-selected="false" tabindex="-1">動線優化</button>
+            <button role="tab" id="tab-creature" aria-controls="panel-creature" aria-selected="false" tabindex="-1">角色技美</button>
+            <button role="tab" id="tab-material" aria-controls="panel-material" aria-selected="false" tabindex="-1">材質技美</button>
+            <button role="tab" id="tab-mechanic" aria-controls="panel-mechanic" aria-selected="false" tabindex="-1">機制企劃</button>
+            <button role="tab" id="tab-anim" aria-controls="panel-anim" aria-selected="false" tabindex="-1">關卡動畫</button>
+            <button role="tab" id="tab-market" aria-controls="panel-market" aria-selected="false" tabindex="-1">行銷企劃</button>
+            <button role="tab" id="tab-release" aria-controls="panel-release" aria-selected="false" tabindex="-1">上架發行</button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-level" aria-labelledby="tab-level">
+            <div class="panel-text">
+              <h5>關卡企劃、設計、搭建：沉浸式深海氛圍與光影調校</h5>
+              <p><b>設計目標</b>　打造極具壓迫感與未知恐懼的深海沉船內部環境，透過極端的明暗對比，引導玩家的視線與心理節奏。</p>
+              <p><b>霧氣調校</b>　指數級霧氣調校，精密控制霧氣密度與衰減參數，模擬水下高雜質、光線迅速消散的真實物理視覺。</p>
+              <p><b>後處理體積</b>　針對深海環境調校動態曝光與色彩分級（Post Process Volume），確保極暗場景中仍具備豐富的暗部細節與層次感。</p>
+              <p><b>局部光源</b>　利用微弱的警示紅光與手電筒聚光燈形成視覺反差，營造封閉空間的幽閉恐懼。</p>
+            </div>
+            <div class="panel-img two">
+              <button type="button" class="shot-btn" data-caption="關卡設計 — 警示紅光下的洞穴"><img src="images/sw-cave.webp" width="1600" height="900" alt="紅色警示燈下的深海洞穴" loading="lazy"></button>
+              <button type="button" class="shot-btn" data-caption="關卡設計 — 霧中的沉船甲板"><img src="images/sw-deck.webp" width="1600" height="900" alt="霧中的沉船甲板" loading="lazy"></button>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-flow" aria-labelledby="tab-flow" hidden>
+            <div class="panel-text">
+              <h5>關卡企劃：優化篇</h5>
+              <p><b>負責職責</b>　關卡動線規劃與優化、動態關卡載入管理、以及引導、製作關卡流送。</p>
+              <p><b>設計目標</b>　規劃複雜且狹窄的船艙多層級空間，在維持深海封閉壓抑感的同時，優化玩家的探索動線，避免產生無效迷路或視覺疲勞。</p>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-creature" aria-labelledby="tab-creature" hidden>
+            <div class="panel-text">
+              <h5>角色技術美術</h5>
+              <p><b>負責職責</b>　角色 3D 建模製作、角色拓撲優化、骨架建置、皮膚權重刷取。</p>
+              <p><b>設計目標</b>　打造一款具有高度真實感與恐怖張力的深海無脊椎變異生物，強調海洋捕食者的流線形身軀與超自然變異器官的融合。</p>
+            </div>
+            <div class="panel-img two on-tone">
+              <button type="button" class="shot-btn contain" data-caption="角色技美 — 深海變異生物 A"><img src="images/sw-creature-a.webp" width="1200" height="799" alt="深海變異生物模型側視" loading="lazy"></button>
+              <button type="button" class="shot-btn contain" data-caption="角色技美 — 深海變異生物 B"><img src="images/sw-creature-b.webp" width="949" height="452" alt="深海變異生物模型俯視" loading="lazy"></button>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-material" aria-labelledby="tab-material" hidden>
+            <div class="panel-text">
+              <h5>材質技術美術</h5>
+              <p><b>負責職責</b>　材質參數化與效能優化。</p>
+              <p><b>設計目標</b>　建構一套高彈性、可重複使用的母材質，讓美術團隊能透過材質實例，即時微調生物外觀，大幅降低引擎的記憶體開銷與編譯時間。</p>
+            </div>
+            <div class="panel-img">
+              <button type="button" class="shot-btn" data-caption="材質技美 — 遊戲內畫面"><img src="images/sw-dive.webp" width="1400" height="748" alt="藍色光線下潛水員視角" loading="lazy"></button>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-mechanic" aria-labelledby="tab-mechanic" hidden>
+            <div class="panel-text">
+              <h5>機制企劃</h5>
+              <p><b>負責職責</b>　核心移動機制開發、水下物理手感調校。</p>
+              <p><b>設計目標</b>　打破陸地的移動邏輯，建構一套具備「水下阻力、滑行慣性、浮力反饋」的高質感三維空間游泳機制。</p>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-anim" aria-labelledby="tab-anim" hidden>
+            <div class="panel-text">
+              <h5>關卡動畫</h5>
+              <p><b>負責職責</b>　使用 Unreal Sequencer 進行關卡動畫製作。</p>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-market" aria-labelledby="tab-market" hidden>
+            <div class="panel-text">
+              <h5>遊戲行銷企劃</h5>
+              <p><b>負責職責</b>　獨立遊戲行銷、社群媒體營運、線下展覽規劃與執行。</p>
+              <p><b>專案成果</b>　單支社群推文突破千次轉發與萬次觀看，成功打入線下獨立遊戲展專區。</p>
+              <p><b>營運目標</b>　利用有限的預算，精準鎖定「深海恐懼、maritime、恐怖遊戲」的受眾，在社群平台上最大化產品曝光度。</p>
+            </div>
+            <div class="panel-img">
+              <button type="button" class="shot-btn portrait-shot" data-caption="Indie House 獨立遊戲專區 — 寂靜沉輪展位"><img src="images/sw-booth.webp" width="787" height="1033" alt="Indie House 展場中寂靜沉輪的展位牌與參展證" loading="lazy"></button>
+            </div>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-release" aria-labelledby="tab-release" hidden>
+            <div class="panel-text">
+              <h5>Steam、itch.io 上架與商店發行</h5>
+              <p><b>負責事項</b>　Steam 平台商業發行、商店頁面視覺行銷優化、宣傳影音行銷。</p>
+              <p><b>專案成果</b>　獨立完成從零到 Steam 商店建立、審查至公開全流程。</p>
+              <p><a class="link" href="https://store.steampowered.com/app/4641880/Silent_Wreckage/" target="_blank" rel="noopener">前往 Steam 商店頁面 ↗</a></p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="section">
+      <h2>經歷與獎項<small>Timeline</small></h2>
+      <ol class="timeline">
+        <li><time>2024</time><span>中部異校大亂鬥</span></li>
+        <li><time>2025</time><span>中部異校大亂鬥</span></li>
+        <li><time>2026</time><span>台北國際電玩展 獨立遊戲專區參展</span></li>
+        <li class="award"><time>2026</time><span>青春設計節<em>優選獎</em></span></li>
+        <li class="award"><time>2026</time><span>金典新秀設計獎<em>入圍</em></span></li>
+        <li class="award"><time>2026</time><span>放視大賞<em>優選獎</em></span></li>
+        <li><time>專案</time><span>開發《Silent Wreckage 寂靜沉輪》</span></li>
+        <li><time>合作</time><span>親子天下動態繪本製作合作夥伴</span></li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2>聯絡<small>Contact</small></h2>
+      <p class="contact-lead">想合作、聊聊遊戲，或想了解《寂靜沉輪》，歡迎來信。</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:s0968522043@gmail.com">s0968522043@gmail.com</a>
+        <a class="btn" href="https://store.steampowered.com/app/4641880/Silent_Wreckage/" target="_blank" rel="noopener">Steam：寂靜沉輪 ↗</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> JGBEAT. All rights reserved.</p>
+    <p id="footer-line">© <span id="year"></span> 江浚盛. All rights reserved.</p>
   </footer>
+
+  <dialog id="lightbox" aria-label="圖片檢視">
+    <button type="button" class="lb-close" aria-label="關閉">✕</button>
+    <button type="button" class="lb-nav prev" aria-label="上一張">‹</button>
+    <img alt="">
+    <button type="button" class="lb-nav next" aria-label="下一張">›</button>
+    <p class="lb-caption"></p>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

@@ -1,10 +1,17 @@
-# Portfolio
+# 江浚盛 | 作品集網站
 
-我的個人網站，使用純 HTML / CSS / JavaScript 製作，無需建置。
+遊戲開發者・技術美術的個人作品集，使用純 HTML / CSS / JavaScript 製作，無需建置。
+
+## 結構
+
+| 檔案 | 說明 |
+| --- | --- |
+| `index.html` | 頁面內容（簡介、作品、經歷、聯絡） |
+| `style.css` | 樣式，含深海／紙本兩種主題 |
+| `script.js` | 互動：主題切換、深度計、氣泡、燈箱、分頁 |
+| `images/` | 從作品集 PDF 匯出並壓縮的 WebP 圖片 |
 
 ## 本機預覽
-
-直接用瀏覽器開啟 `index.html`，或執行：
 
 ```bash
 python -m http.server 8123
