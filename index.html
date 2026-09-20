@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JGBEAT | 個人網站</title>
+  <meta name="description" content="JGBEAT 的個人作品集與部落格入口。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top">JGBEAT</a>
+    <nav>
+      <a href="#about">關於我</a>
+      <a href="#skills">技能</a>
+      <a href="#projects">作品</a>
+      <a href="#contact">聯絡</a>
+      <button id="theme-toggle" type="button" aria-label="切換深色／淺色模式">◐</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Hello, 我是</p>
+      <h1>JGBEAT</h1>
+      <p class="lead">一句話介紹你自己，例如：熱愛把想法變成產品的開發者與創作者。</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">看我的作品</a>
+        <a class="btn" href="#contact">聯絡我</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>關於我</h2>
+      <p>在這裡寫下你的故事：你是誰、做什麼、為什麼做。可以提到你的背景、興趣，以及你目前正在學習或投入的事情。</p>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>技能</h2>
+      <ul class="tags">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Git / GitHub</li>
+        <li>UI 設計</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>作品</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>專案一</h3>
+          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
+          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
+        </article>
+        <article class="card">
+          <h3>專案二</h3>
+          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
+          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
+        </article>
+        <article class="card">
+          <h3>專案三</h3>
+          <p>簡短說明這個專案解決了什麼問題、用了哪些技術。</p>
+          <a href="#" target="_blank" rel="noopener">查看專案 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>聯絡</h2>
+      <p>想合作或聊聊，歡迎來信。</p>
+      <p><a class="btn primary" href="mailto:s0968522043@gmail.com">s0968522043@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> JGBEAT. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
